@@ -1,0 +1,18 @@
+GET http://localhost:5000/api/smart-contract
+
+###
+GET http://localhost:5000/api/smart-contract/getById/0x5b1869d9a4c187f2e75a5e4d78f6e0f8c5f7a5a3
+
+
+###
+# create product
+POST http://localhost:5000/api/smart-contract/
+Content-Type: application/json
+
+{
+    "name": "Roti Beruang",
+    "price": 10000
+}
+
+###
+POST http://localhost:5000/api/smart-contract/connect
