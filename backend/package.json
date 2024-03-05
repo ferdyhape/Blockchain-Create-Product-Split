@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@alch/alchemy-web3": "^1.4.7",
+    "@ethereumjs/tx": "^5.2.1",
     "@prisma/client": "^5.10.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
