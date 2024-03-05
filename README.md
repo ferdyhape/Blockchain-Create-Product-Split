@@ -37,7 +37,7 @@
     ```
     git clone https://github.com/ferdyhape/Blockchain-Create-Product.git
     ```
-5.  Copy paste **.env.example** file and rename as **.env**
+5.  Open backend folder, copy paste **.env.example** file and rename as **.env**
 6.  Adjust the **.env** file
 
     ```
