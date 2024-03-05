@@ -1,5 +1,4 @@
-import { createContractInstance } from "../config/smartContract.js";
-import { tesRawSendTx } from "../config/tesRawSendTx.js";
+import { createContractInstance, sendRawTx } from "../config/smartContract.js";
 import Web3 from "web3";
 
 export const getProducts = async (req, res) => {
@@ -41,16 +40,6 @@ export const getProductById = async (req, res) => {
 // create product
 export const createProduct = async (req, res) => {
   const { name, description, price, userAddress } = req.body;
-  var response = await tesRawSendTx(name, description, price, userAddress);
-
-  // console.log(name, description, price, userAddress);
-  // const contract = await createContractInstance();
-  // const response = await contract.methods
-  //   .addProduct(name, description, price)
-  //   .send({
-  //     from: userAddress,
-  //     gasPrice: 0,
-  //   });
-
+  var response = await sendRawTx(name, description, price, userAddress);
   res.json(response);
 };

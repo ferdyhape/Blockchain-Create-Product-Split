@@ -5,9 +5,13 @@ dotenv.config();
 const {
   CONTRACT_ADDRESS_GOERLI,
   CONTRACT_ADDRESS_SEPOLIA,
-  INFURA_URL_API,
-  ALCHEMY_URL_API,
+  INFURA_URL_API, // HANDLING GOERLI ETH USING INFURA
+  ALCHEMY_URL_API, // HANDLING SEPOLIA ETH USING ALCHEMY
+  PRIVATE_KEY,
 } = process.env;
+
+const web3 = new Web3(INFURA_URL_API);
+
 export const smartContractConfig = {
   ABI: [
     {
@@ -220,10 +224,42 @@ export const smartContractConfig = {
 };
 
 export const createContractInstance = async () => {
-  const web3 = new Web3(INFURA_URL_API); // HANDLING GOERLI ETH USING INFURA
-  // const web3 = new Web3(ALCHEMY_URL_API); // HANDLING SEPOLIA ETH USING ALCHEMY
   const ABI = smartContractConfig.ABI;
   const contractAddress = smartContractConfig.contractAddress;
   const contract = new web3.eth.Contract(ABI, contractAddress);
   return contract;
+};
+
+export const sendRawTx = async (name, description, price, userAddress) => {
+  try {
+    const nonce = await web3.eth.getTransactionCount(userAddress);
+    const gasPrice = await web3.eth.getGasPrice();
+    const gasLimit = 3000000;
+    const contractABI = smartContractConfig.ABI;
+    const contractAddress = smartContractConfig.contractAddress;
+    const contract = new web3.eth.Contract(contractABI, contractAddress);
+    const data = contract.methods
+      .addProduct(name, description, price)
+      .encodeABI();
+    const rawTx = {
+      nonce: web3.utils.toHex(nonce),
+      gasPrice: web3.utils.toHex(gasPrice),
+      gasLimit: web3.utils.toHex(gasLimit),
+      to: contractAddress,
+      value: "0x00",
+      data: data,
+    };
+    const signedTx = await web3.eth.accounts.signTransaction(
+      rawTx,
+      PRIVATE_KEY
+    );
+    const sentTx = await web3.eth.sendSignedTransaction(
+      signedTx.rawTransaction
+    );
+    console.log("Transaction hash:", sentTx.transactionHash);
+    return sentTx.transactionHash;
+  } catch (error) {
+    console.error("Error sending raw transaction:", error);
+    throw error;
+  }
 };
