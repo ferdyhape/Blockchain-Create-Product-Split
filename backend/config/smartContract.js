@@ -7,7 +7,7 @@ const {
   CONTRACT_ADDRESS_SEPOLIA,
   INFURA_URL_API, // HANDLING GOERLI ETH USING INFURA
   ALCHEMY_URL_API, // HANDLING SEPOLIA ETH USING ALCHEMY
-  PRIVATE_KEY,
+  MY_WALLET_PRIVATE_KEY,
   MY_WALLET_ADDRESS,
 } = process.env;
 
@@ -252,7 +252,7 @@ export const sendRawTx = async (name, description, price) => {
     };
     const signedTx = await web3.eth.accounts.signTransaction(
       rawTx,
-      PRIVATE_KEY
+      MY_WALLET_PRIVATE_KEY
     );
     const sentTx = await web3.eth.sendSignedTransaction(
       signedTx.rawTransaction
