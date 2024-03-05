@@ -9,9 +9,8 @@
 5. [About Creator](#about-creator)
 
 ## Preview
-
 <p align="center">
-  <img src="#link" width="90%" height="90%">
+  <img src="https://github.com/ferdyhape/Split-Solidity-Express-Blockchain/assets/75787853/dea0f045-1d52-4df4-8dd1-378680f7fca9" width="90%" height="90%">
 </p>
 
 ## Description
