@@ -9,13 +9,14 @@
 5. [About Creator](#about-creator)
 
 ## Preview
+
 <p align="center">
-  <img src="https://github.com/ferdyhape/Split-Solidity-Express-Blockchain/assets/75787853/dea0f045-1d52-4df4-8dd1-378680f7fca9" width="90%" height="90%">
+  <img src="https://github.com/ferdyhape/Split-Solidity-Express-Blockchain/assets/75787853/dea0f045-1d52-4df4-8dd1-378680f7fca9" width="75%" height="75%">
 </p>
 
 ## Description
 
-- This repository is made for learning the block
+- This repository is made for learning the block chain technology and how to integrate it with the web application
 
 ## Tech Stack
 
@@ -41,8 +42,8 @@
 
     ```
     APP_PORT = 5000
-    INFURA_URL_API = "YOUR_INFURA_API_KEY"
-    ALCHEMY_URL_API = "YOUR_ALCHEMY_API_KEY"
+    INFURA_URL_API = "https://goerli.infura.io/v3/YOUR_INFURA_API_KEY" // You can get this from Infura
+    ALCHEMY_URL_API = "https://eth-sepolia.g.alchemy.com/v2/YOUR_ALCHEMY_API_KEY" // You can get this from Alchemy
     CONTRACT_ADDRESS_GOERLI = "YOUR_CONTRACT_ADDRESS" // You can get this from Remix IDE
     CONTRACT_ADDRESS_SEPOLIA = "YOUR_CONTRACT_ADDRESS" // You can get this from Remix IDE
     MY_WALLET_PRIVATE_KEY = "YOUR_WALLET_PRIVATE_KEY" // You can get this from your wallet
