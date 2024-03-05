@@ -1,23 +1,7 @@
 // connect metamask
-let accountGlobVariable;
 let API_URL = "http://localhost:5000/api";
 
 $(document).ready(function () {
-  $("#connectMetaMask").click(function () {
-    if (window.ethereum !== "undefined") {
-      window.ethereum
-        .request({
-          method: "eth_requestAccounts",
-        })
-        .then(function (accounts) {
-          accountGlobVariable = accounts[0];
-          $("#accountArea").html("Connected to " + accountGlobVariable);
-          $("#accountArea").removeClass("btn-danger");
-          $("#accountArea").addClass("btn-success");
-        });
-    }
-  });
-
   $("#getAllData").click(async function () {
     try {
       const response = await fetch(API_URL + "/smart-contract/");
@@ -99,7 +83,6 @@ $(document).ready(function () {
           name: productName,
           description: productDescription,
           price: productPrice,
-          userAddress: accountGlobVariable,
         }),
       });
       const data = await response.json();
@@ -113,28 +96,3 @@ $(document).ready(function () {
     }
   });
 });
-
-// handle create product form
-// const addProductForm = document.getElementById("addProductForm");
-// addProductForm.addEventListener("submit", async (e) => {
-//   e.preventDefault();
-
-//   const productName = document.getElementById("productName").value;
-//   const productDescription =
-//     document.getElementById("productDescription").value;
-//   const productPrice = document.getElementById("productPrice").value;
-
-//   try {
-//     await window.contract.methods
-//       .addProduct(productName, productDescription, productPrice)
-//       .send({
-//         from: accountGlobVariable,
-//       });
-
-//     addProductForm.reset();
-//     alert("Product added successfully!");
-//   } catch (error) {
-//     console.error("Error adding product:", error);
-//     alert("Failed to add product. Please try again.");
-//   }
-// });

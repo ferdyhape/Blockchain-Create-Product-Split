@@ -5,7 +5,6 @@ export const getProducts = async (req, res) => {
   try {
     const contract = await createContractInstance();
     const products = await contract.methods.getAllProducts().call();
-    console.log(products);
     const mappedProducts = products.map((product) => {
       return {
         productId: product.productId,
@@ -39,7 +38,7 @@ export const getProductById = async (req, res) => {
 
 // create product
 export const createProduct = async (req, res) => {
-  const { name, description, price, userAddress } = req.body;
-  var response = await sendRawTx(name, description, price, userAddress);
+  const { name, description, price } = req.body;
+  var response = await sendRawTx(name, description, price);
   res.json(response);
 };

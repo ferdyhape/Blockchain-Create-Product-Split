@@ -8,6 +8,7 @@ const {
   INFURA_URL_API, // HANDLING GOERLI ETH USING INFURA
   ALCHEMY_URL_API, // HANDLING SEPOLIA ETH USING ALCHEMY
   PRIVATE_KEY,
+  MY_WALLET_ADDRESS,
 } = process.env;
 
 const web3 = new Web3(INFURA_URL_API);
@@ -230,9 +231,9 @@ export const createContractInstance = async () => {
   return contract;
 };
 
-export const sendRawTx = async (name, description, price, userAddress) => {
+export const sendRawTx = async (name, description, price) => {
   try {
-    const nonce = await web3.eth.getTransactionCount(userAddress);
+    const nonce = await web3.eth.getTransactionCount(MY_WALLET_ADDRESS);
     const gasPrice = await web3.eth.getGasPrice();
     const gasLimit = 3000000;
     const contractABI = smartContractConfig.ABI;
