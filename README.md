@@ -35,7 +35,7 @@
 
 4.  Clone this repository
     ```
-    git clone https://github.com/ferdyhape/Split-Solidity-Express-Blockchain.git
+    git clone https://github.com/ferdyhape/Blockchain-Create-Product.git
     ```
 5.  Copy paste **.env.example** file and rename as **.env**
 6.  Adjust the **.env** file
